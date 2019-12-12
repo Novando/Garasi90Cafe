@@ -12,6 +12,7 @@ ul{
 	background-color: rgba(0,0,0,0.5);
 	position: sticky;
 	top: 0;
+	z-index: 1;
 }
 
 li{
@@ -41,6 +42,7 @@ li a:hover{
 	background-attachment: scroll;
 	background-size: cover;
 	filter: blur(2px);
+	height: 720px;
 }
 
 .sambutan{
@@ -54,4 +56,14 @@ li a:hover{
   	left: 100px;
   	width: 500px;
   	padding: 20px;
+}
+
+.masuk{
+	max-width: 320px;
+	padding: 10px;
+	display: none;
+	position: fixed;
+	z-index: 10;
+	background-color: white;
+	
 }

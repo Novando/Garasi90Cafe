@@ -6,6 +6,13 @@
 	<script src="perintah.js"></script>
 </head>
 <body>
+		<form class="masuk" id="idMasuk">
+			<h1>MASUK</h1>
+			<input type="text" placeholder="USERNAME atau E-MAIL" name="user" required="">
+			<input type="text" placeholder="PASSWORD" name="password" required="">
+			<button type="submit" class="msk">Masuk</button>
+			<button type="submit" class="btl" onclick="tutupFormulir()">Batal</button>
+		</form>
 	<div class="kepala">
 		<center><img src="gambar/logo.png"></center>
 	</div>
@@ -14,15 +21,9 @@
 		<li><a href="#menu">MENU</a></li>
 		<li><a href="#shop">TOKO</a></li>
 		<li><a href="#event">ACARA</a></li>
-		<li style="float:right;"><a href="#login">LOG IN</a></li>
+		<li style="float:right;"><a href="#login" onclick="bukaFormulir()">MASUK</a></li>
 	</ul>
-	<div class="gambar-awal">
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-		<br><br><br><br><br><br>
-	</div>
+	<div class="gambar-awal"></div>
 	<div>
 		<div class="sambutan">
 			<h1>Garasi 90s</h1>
