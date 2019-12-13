@@ -6,13 +6,27 @@
 	<script src="perintah.js"></script>
 </head>
 <body>
-		<form class="masuk" id="idMasuk">
+	<div class="masuk-daftar" id="masuk-daftar">
+		<form class="formulir-masuk" id="formulir-masuk">
 			<h1>MASUK</h1>
-			<input type="text" placeholder="USERNAME atau E-MAIL" name="user" required="">
-			<input type="text" placeholder="PASSWORD" name="password" required="">
-			<button type="submit" class="msk">Masuk</button>
-			<button type="submit" class="btl" onclick="tutupFormulir()">Batal</button>
+			<input type="text" placeholder="USERNAME atau E-MAIL" name="user" required=""><br>
+			<input type="password" placeholder="PASSWORD" name="password" required=""><br>
+			<button type="submit" class="tombol-masuk">Masuk</button>
+			<button type="submit" class="tombol-batal" onclick="tutupFormulir()">Batal</button><br><br>
+			<a href="#">Lupa Password?</a><br>
+			Belum punya akun? <a href="#" onclick="mauDaftar()">Daftar dulu</a>
 		</form>
+		<form class="formulir-daftar" id="formulir-daftar">
+			<h1>DAFTAR</h1>
+			<input type="text" placeholder="E-MAIL" name="email" required=""><br>
+			<input type="text" placeholder="USERNAME" name="user" required=""><br>
+			<input type="password" placeholder="PASSWORD" name="password" required=""><br>
+			<input type="password" placeholder="ULANG PASSWORD" name="password2" required=""><br>
+			<button type="submit" class="tombol-masuk">Masuk</button>
+			<button type="submit" class="tombol-batal" onclick="tutupFormulir()">Batal</button><br><br>
+			Sudah punya akun?<a href="#" onclick="mauMasuk()">Silahkan masuk</a>
+		</form>
+	</div>
 	<div class="kepala">
 		<center><img src="gambar/logo.png"></center>
 	</div>
