@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div class="masuk-daftar" id="masuk-daftar">
-		<form class="formulir-masuk" id="formulir-masuk">
+		<form name="formulir-masuk" class="formulir-masuk" id="formulir-masuk">
 			<h1>MASUK</h1>
 			<input type="text" placeholder="USERNAME atau E-MAIL" name="user" required=""><br>
 			<input type="password" placeholder="PASSWORD" name="password" required=""><br>
@@ -16,14 +16,15 @@
 			<a href="#">Lupa Password?</a><br>
 			Belum punya akun? <a href="#" onclick="mauDaftar()">Daftar dulu</a>
 		</form>
-		<form class="formulir-daftar" id="formulir-daftar">
+		<form name="formulir-daftar" class="formulir-daftar" id="formulir-daftar" method="post" action="simpan.php">
 			<h1>DAFTAR</h1>
-			<input type="text" placeholder="E-MAIL" name="email" required=""><br>
-			<input type="text" placeholder="USERNAME" name="user" required=""><br>
-			<input type="password" placeholder="PASSWORD" name="password" required=""><br>
-			<input type="password" placeholder="ULANG PASSWORD" name="password2" required=""><br>
+			<input type="text" placeholder="E-MAIL" name="email" td="email" required=""><br>
+			<input type="text" placeholder="USERNAME" name="user" td="user" required=""><br>
+			<input type="password" placeholder="PASSWORD" name="password" td="passwod" required=""><br>
+			<input type="password" placeholder="ULANG PASSWORD" name="password2" required="" onkeyup="cekDaftar()"><br>
+			<span class="notif" id="notif">Password tidak sesuai</span>
 			<button type="submit" class="tombol-masuk">Masuk</button>
-			<button type="submit" class="tombol-batal" onclick="tutupFormulir()">Batal</button><br><br>
+			<button type="reset" class="tombol-batal" onclick="tutupFormulir()">Batal</button><br><br>
 			Sudah punya akun?<a href="#" onclick="mauMasuk()">Silahkan masuk</a>
 		</form>
 	</div>
@@ -35,7 +36,11 @@
 		<li><a href="#menu">MENU</a></li>
 		<li><a href="#shop">TOKO</a></li>
 		<li><a href="#event">ACARA</a></li>
-		<li style="float:right;"><a href="#login" onclick="bukaFormulir()">MASUK</a></li>
+		<li class="level-1" style="float:right;">Halo</li>
+		<li class="level-0" style="float:right;"><a href="#login" onclick="bukaFormulir()">MASUK</a></li>
+		<li class="level-3" style="float:right;"><a href="#login" onclick="">KELUAR</a></li>
+		<li class="level-3" style="float:right;"><a href="#login" onclick="">MEMBER</a></li>
+		<li class="level-2" style="float:right;"><a href="#login" onclick="">ADMIN</a></li>
 	</ul>
 	<div class="gambar-awal"></div>
 	<div>

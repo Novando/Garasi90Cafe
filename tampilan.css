@@ -111,3 +111,8 @@ li a:hover{
 	border-radius: 20px;
 	border-style: hidden;
 }
+
+.notif{
+	display: none;
+	color: red;
+}
