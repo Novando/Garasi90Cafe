@@ -1,5 +1,5 @@
 function bukaFormulir(){
-	document.getElementById("masuk-daftar").style.display = "block";
+	document.getElementById("level-0").style.display = "none";
 }
 
 function tutupFormulir(){

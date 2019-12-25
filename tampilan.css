@@ -17,10 +17,10 @@ ul{
 
 li{
 	float: left;
+	padding: 14px 16px;
 }
 
 li a {
- 	display: block;
  	color: white;
   	text-align: center;
   	padding: 14px 16px;
@@ -115,4 +115,42 @@ li a:hover{
 .notif{
 	display: none;
 	color: red;
+}
+
+.footer{
+	background-color: black;
+	margin: 1%;
+	color: white;
+}
+
+.footer a{
+	font-size: 24px;
+	color: white;
+	text-decoration: none;
+}
+
+.tentang{
+	background-color: white;
+}
+
+.tentang p{
+	line-height: 128px;
+	display: block;
+	background-color: white;
+	font-weight: 300;
+	font-size: 24px;
+}
+
+.produk{
+	background-color: white;
+	display: inline-block;
+	width: 360px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: red;
+	margin: 25px;
+}
+
+.produk img{
+	width: 350px;
 }

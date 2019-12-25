@@ -1,32 +1,19 @@
 <?php
-include "konek.php";
+require "konek.php";
 
-$username = $_POST['user'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$cek_user = "SELECT username FROM g90s";
-$cek_email = "SELECT email FROM g90s";
-$hasil_user = mysqli_query($konek, $cek_user);
-$hasil_email = mysqli_query($konek, $cek_email);
+$username = strtolower($_POST["user"]);
+$email = strtolower($_POST["email"]);
+$password = $_POST["password"];
+$cek_user = mysqli_query($konek, "SELECT username FROM user WHERE username = '$username'");
+$cek_email = mysqli_query($konek, "SELECT email FROM user WHERE email = '$email'");
 
-while ($entri = mysqli_fetch_assoc($hasil_user)) {
-	if ($entri["username"] == $username) {
-		echo "Username tidak tersedia";
-		exit();
-		mysqli_close($konek);
-	} 
+if (mysqli_fetch_assoc($cek_user)) {
+	echo "<script> alert('USERNAME tidak tersedia') </script>";
+} else if (mysqli_fetch_assoc($cek_email)) {
+	echo "<script> alert('EMAIL tidak tersedia') </script>";
+} else {
+	mysqli_query($konek, "INSERT INTO user VALUES ('$username', '$password', '$email', '')");
+	mysqli_query($konek, "INSERT INTO daftar VALUES ('', '$username', '$email', '$password', '', '')");
+	echo "<script> alert('Pendaftaran Berhasil!') </script>";
 }
-
-while ($entri = mysqli_fetch_assoc($hasil_email)) {
-	if ($entri["email"] == $email) {
-		echo "email tidak tersedia";
-		exit();
-		mysqli_close($konek);
-	} 
-}
-
-$masuk ="insert into member values ('$username', '$email', '', '', '$password')";
-mysqli_query($konek, $masuk);
-
-header("location:http://localhost/garasi90s/utama.html");
 ?>
