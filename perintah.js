@@ -1,5 +1,5 @@
 function bukaFormulir(){
-	document.getElementById("level-0").style.display = "none";
+	document.getElementById("masuk-daftar").style.display = "block";
 }
 
 function tutupFormulir(){
@@ -22,4 +22,26 @@ function cekDaftar() {
 	} else {
 		document.getElementById("notif").style.display = "none";
 	}
+}
+
+function hitungSub(counter) {
+	var harga = document.getElementById("harga-"+counter).value;
+	var jumlah = document.getElementById("jumlah-"+counter).value;
+	var sub = harga * jumlah;
+	document.getElementById("sub-"+counter).value = sub;
+}
+
+function total() {
+	var bayar = 0;
+	for (var i = 1; i <= 24; i++) {
+		bayar = bayar + parseInt(document.getElementById("sub-"+i).value);
+	}
+	document.getElementById("pertama").style.display = "none";
+	document.getElementById("kedua").style.display = "block";
+	document.getElementById("total").innerHTML = "IDR " + bayar;
+	alert(bayar);
+}
+
+function selesai() {
+	window.location.href = "https://localhost/Web";
 }

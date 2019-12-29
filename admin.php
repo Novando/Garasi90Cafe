@@ -1,5 +1,12 @@
 <?php
-session_start();
+	session_start();
+	if ($_SESSION["akses"] < 3) {
+		header("location:/garasi90cafe");
+		exit;
+	}
+	require "konek.php";
+	$pengguna = mysqli_query($konek, "SELECT * FROM user");
+	$nomor = 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -65,28 +72,7 @@ session_start();
 		<?php break;
 	} ?>
 </head>
-<body>
-	<div class="masuk-daftar" id="masuk-daftar">
-		<form name="formulir-masuk" class="formulir-masuk" id="formulir-masuk" method="post" action="masuk.php">
-			<h1>MASUK</h1>
-			<input type="text" placeholder="USERNAME atau E-MAIL" name="user" required=""><br>
-			<input type="password" placeholder="PASSWORD" name="password" required=""><br>
-			<button type="submit" class="tombol-masuk">Masuk</button>
-			<button type="reset" class="tombol-batal" onclick="tutupFormulir()">Batal</button><br><br>
-			Belum punya akun? <a href="#" onclick="mauDaftar()">Daftar dulu</a>
-		</form>
-		<form name="formulir-daftar" class="formulir-daftar" id="formulir-daftar" method="post" action="simpan.php">
-			<h1>DAFTAR</h1>
-			<input type="text" placeholder="E-MAIL" name="email" td="email" required=""><br>
-			<input type="text" placeholder="USERNAME" name="user" td="user" required=""><br>
-			<input type="password" placeholder="PASSWORD" name="password" td="passwod" required=""><br>
-			<input type="password" placeholder="ULANG PASSWORD" name="password2" required="" onkeyup="cekDaftar()"><br>
-			<span class="notif" id="notif">Password tidak sesuai</span>
-			<button type="submit" class="tombol-masuk">Masuk</button>
-			<button type="reset" class="tombol-batal" onclick="tutupFormulir()">Batal</button><br><br>
-			Sudah punya akun?<a href="#" onclick="mauMasuk()">Silahkan masuk</a>
-		</form>
-	</div>
+<body style="background-color: white;">
 	<div class="kepala">
 		<center><img src="gambar/logo.png"></center>
 	</div>
@@ -102,49 +88,98 @@ session_start();
 		<li class="level-2" style="float:right;"><a href="kasir.php" onclick="">KASIR</a></li>
 		<li class="level-3" style="float:right;"><a href="admin.php" onclick="">ADMIN</a></li>
 	</ul>
-	<div class="gambar-awal"></div>
-	<div>
-		<div class="sambutan">
-			<h1>Garasi 90s</h1>
-			<p>Tempat Duduk Bacarita di Merauke</p>
-		</div>
-	</div>
-	<div class="tentang">
-		<table bgcolor="white" width="100%">
+	<div class="daftar-member">
+		<center>
+			<br><br><br><br>
+			<font size="24px">DAFTAR MEMBER GARASI 90s</font>
+			<br><br>
+		<table border="1">
 			<tr>
-				<td><img src="gambar/kopi-kiri.png"></td>
-				<td>
-					<p>
-						Garasi 90s, kam su dengar toh ini tempat asik untuk duduk cerita?<br>
-						kamorang mau bahas bisnis kah, kuliah kah, kerja tugas kah,<br>
-						bahas mantan -ups- atau cuma mau baku tipu banyak kah,<br>
-						tidak apa-apa kam datang ke sini saja, Garasi 90s.
-					</p>
-				</td>
+				<th>No.</th>
+				<th>Pengguna</th>
+				<th>e-Mail</th>
+				<th>Level Akses</th>
 			</tr>
-			<tr>
-				<td style="padding-left: 50px;">
-					<p>
-						Belum pernah ke Garasi 90s kah? Kam parah sekali nih.<br>
-						Yo sudah, tong kasih tau eh. Jadi Garasi 90s tu ada di<br>
-						Jalan Pendidikan, ada pas di depan SMP Negeri 1 situ.<br>
-						Adoh kalo kam masih bingung kam liat de pu lokasi di bawah saja eh.
-					</p>
-				</td>
-				<td align="right"><img src="gambar/kopi-kanan.png"></td>
-			</tr>
+			<?php foreach ($pengguna as $guna) { 
+				$nomor = $nomor + 1;?>
+				<tr>
+					<td><?php echo $nomor ?></td>
+					<td><?php echo $guna["username"] ?></td>
+					<td><?php echo $guna["email"] ?></td>
+					<td><?php echo $guna["akses"]?></td>
+				</tr>
+			<?php } ?>
 		</table>
+		</center>
 	</div>
-	<div class="footer">
-		<table width="100%">
+	<div class="daftar-member">
+		<center>
+			<br><br><br><br>
+			<font size="24px">SISTEM INPUT MENU BARU GARASI 90s</font>
+			<br><br>
+		<form>
+		<table border="1">
 			<tr>
 				<td>
-					Kunjungi kami:<br><br>
-					<a href="https://www.instagram.com/garasi.90s/"><img src="gambar/ig.png" width="32px"> Garasi90s</a>
+					<label for="jenismenu">Jenis</label>
 				</td>
-				<td align="right">©2019 RNP</td>
+				<td>
+					<label for="jenismenu">:</label>
+				</td>
+				<td>
+					<select id="jenismenu" name="jenismenu">
+						<option>Makanan</option>
+						<option>Minuman</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="namamenu">Nama</label>
+				</td>
+				<td>
+					<label for="namamenu">:</label>
+				</td>
+				<td>
+					<input type="text" id="jenismenu" name="namamenu">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="hargamenu">Harga</label>
+				</td>
+				<td>
+					<label for="hargamenu">:</label>
+				</td>
+				<td>
+					<input type="number" name="hargamenu">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="deskmenu">Nama</label>
+				</td>
+				<td>
+					<label for="deskmenu">:</label>
+				</td>
+				<td>
+					<input type="area" size="128" name="deskmenu">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<label for="namamenu">Nama</label>
+				</td>
+				<td>
+					<label for="namamenu">:</label>
+				</td>
+				<td>
+					<input type="text" name="namamenu">
+				</td>
 			</tr>
 		</table>
+		</form>
+		</center>
 	</div>
 </body>
 </html>

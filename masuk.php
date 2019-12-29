@@ -31,12 +31,12 @@ if ((mysqli_num_rows($cek_user) === 1)) {
 if ($berhasil == true) {
 	$_SESSION["nama"] = strtoupper($cek["username"]);
 	$_SESSION["akses"] = $cek["akses"];
-	$_SESSION["masuk"] = true;
-	header("location:https://localhost/garasi90cafe");
+	$masukgak = true;
+	header("location:/garasi90cafe");
 } else {
 	$_SESSION = [];
 	session_unset();
-	$_SESSION["masuk"] = false;
-	header("location:https://localhost/garasi90cafe");
+	$masukgak = false;
+	header("location:/garasi90cafe");
 }
 ?>

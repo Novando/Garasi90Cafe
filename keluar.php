@@ -4,5 +4,7 @@ $_SESSION = [];
 session_unset();
 session_destroy();
 
-header("location:http://localhost/garasi90cafe/");
+$masukgak = false;
+
+header("location:/garasi90cafe/");
 ?>
